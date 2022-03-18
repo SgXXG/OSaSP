@@ -101,12 +101,14 @@ int main(int argc, char **argv){
 		return -1;
 	}
 
-	if(realpath(argv[1], NULL) == NULL) {
+	char *path = realpath(argv[1], NULL);
+	if(path == NULL) {
 		fprintf(stderr,"%s: %s: %s\n", AppName, argv[1], strerror(errno));
 		return -1;
 	}
 
-	ProcessFolder(file, realpath(argv[1], NULL));
+	ProcessFolder(file, path);
+	free(path);
 
 	if(fclose(file)!=0){
 		fprintf(stderr,"%s: %s: %s\n", AppName, argv[2], strerror(errno));
