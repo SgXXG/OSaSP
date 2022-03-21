@@ -1,2 +1,2 @@
 # OSaSP
-OSaSP labs
+Operation Systems and System Programming labs
